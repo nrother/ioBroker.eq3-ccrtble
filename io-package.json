@@ -5,41 +5,17 @@
         "news": {
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
+                "de": "Erstveröffentlichung"
             }
         },
         "title": "EQ3 BLE Thermostats",
         "titleLang": {
             "en": "EQ3 BLE Thermostats",
-            "de": "EQ3 BLE Thermostate",
-            "ru": "EQ3 BLE Термостаты",
-            "pt": "Termostatos EQ3 BLE",
-            "nl": "EQ3 BLE-thermostaten",
-            "fr": "Thermostats EQ3 BLE",
-            "it": "Termostati BLE EQ3",
-            "es": "Termostatos EQ3 BLE",
-            "pl": "EQ3 BLE Termostaty",
-            "zh-cn": "EQ3 BLE温控器"
+            "de": "EQ3 BLE Thermostate"
         },
         "desc": {
             "en": "This adapter connects EQ3 CC-RT-BLE Thermostats. It allows setting the temperature and can poll the current status.",
-            "de": "Dieser Adapter verbindet EQ3 CC-RT-BLE-Thermostate. ",
-            "ru": "Этот адаптер подключается к термостатам EQ3 CC-RT-BLE. ",
-            "pt": "Este adaptador conecta termostatos EQ3 CC-RT-BLE. ",
-            "nl": "Deze adapter verbindt EQ3 CC-RT-BLE-thermostaten. ",
-            "fr": "Cet adaptateur relie les thermostats EQ3 CC-RT-BLE. ",
-            "it": "Questo adattatore collega i termostati EQ3 CC-RT-BLE. ",
-            "es": "Este adaptador conecta los termostatos EQ3 CC-RT-BLE. ",
-            "pl": "Ten adapter łączy termostaty EQ3 CC-RT-BLE. ",
-            "zh-cn": "该适配器连接EQ3 CC-RT-BLE温控器。"
+            "de": "Dieser Adapter verbindet EQ3 CC-RT-BLE-Thermostate. Er erlaubt, die Temperatur zu setzen und den Status abzufragen."
         },
         "authors": [
             "Niklas Rother <info@niklas-rother.de>"
@@ -71,8 +47,7 @@
         ]
     },
     "native": {
-        "option1": true,
-        "option2": "42"
+        "poll-interval": 60
     },
     "objects": [],
     "instanceObjects": []

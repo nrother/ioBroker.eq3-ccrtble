@@ -10,6 +10,7 @@ const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
+const ccrtble = require("ccrtble");
 
 class Eq3Ccrtble extends utils.Adapter {
 
@@ -36,8 +37,9 @@ class Eq3Ccrtble extends utils.Adapter {
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
-        this.log.info("config option1: " + this.config.option1);
-        this.log.info("config option2: " + this.config.option2);
+        this.log.info("poll interval: " + this.config.poll-interval);
+		
+		return;
 
         /*
         For every state in the system there has to be also an object of type state

@@ -19,7 +19,8 @@
     "url": "https://github.com/nrother/ioBroker.eq3-ccrtble"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.4.0"
+    "@iobroker/adapter-core": "^2.4.0",
+    "ccrtble": "git+https://github.com/ChrisScheffler/ccrtble.git"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.2.0",

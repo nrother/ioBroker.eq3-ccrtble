@@ -37,9 +37,57 @@ class Eq3Ccrtble extends utils.Adapter {
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
-        this.log.info("poll interval: " + this.config.poll-interval);
-		
-		return;
+        this.log.info("poll interval: " + this.config.poll_interval);
+        
+        if (this.config.poll_interval > 0) {
+            //TODO: Setup poll timer
+        }
+        
+        this.log.info("discovering CC-RT-BLE devices...");
+        const devices = await ccrtble.discover();
+        for (let dev of devices) {
+            this.log.info("Found device " + dev.address);
+            //create objects for this device
+            await this.setObjectAsync(dev.address, {
+                type: "device",
+                common: {
+                    name: dev.address
+                },
+                native: {},
+            });
+            await this.setObjectAsync(dev.address + "." + "rssi", {
+                type: "state",
+                common: {
+                    name: "rssi",
+                    type: "number",
+                    unit: "dB",
+                    read: true,
+                    write: false,
+                    role: "value",
+                },
+                native: {},
+            });
+            await this.setObjectAsync(dev.address + "." + "temp", {
+                type: "state",
+                common: {
+                    name: "temp",
+                    type: "number",
+                    unit: "°C",
+                    min: 4.5,
+                    max: 30,
+                    step: 0.5,
+                    read: true,
+                    write: true,
+                    role: "level.temperature",
+                },
+                native: {},
+            });
+            //write RSSI value
+            //TODO: Factor out in method?
+            await this.setStateAsync(dev.address + ".rssi", { val: dev._peripheral.rssi, ack: true });
+        }
+        
+        return;
 
         /*
         For every state in the system there has to be also an object of type state
@@ -74,13 +122,6 @@ class Eq3Ccrtble extends utils.Adapter {
 
         // same thing, but the state is deleted after 30s (getState will return null afterwards)
         await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
-
-        // examples for the checkPassword/checkGroup functions
-        let result = await this.checkPasswordAsync("admin", "iobroker");
-        this.log.info("check user admin pw iobroker: " + result);
-
-        result = await this.checkGroupAsync("admin", "admin");
-        this.log.info("check group user admin group admin: " + result);
     }
 
     /**
@@ -132,15 +173,15 @@ class Eq3Ccrtble extends utils.Adapter {
     //  * @param {ioBroker.Message} obj
     //  */
     // onMessage(obj) {
-    // 	if (typeof obj === "object" && obj.message) {
-    // 		if (obj.command === "send") {
-    // 			// e.g. send email or pushover or whatever
-    // 			this.log.info("send command");
+    //  if (typeof obj === "object" && obj.message) {
+    //      if (obj.command === "send") {
+    //          // e.g. send email or pushover or whatever
+    //          this.log.info("send command");
 
-    // 			// Send response in callback if required
-    // 			if (obj.callback) this.sendTo(obj.from, obj.command, "Message received", obj.callback);
-    // 		}
-    // 	}
+    //          // Send response in callback if required
+    //          if (obj.callback) this.sendTo(obj.from, obj.command, "Message received", obj.callback);
+    //      }
+    //  }
     // }
 
 }
